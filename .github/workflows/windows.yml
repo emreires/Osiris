@@ -4,11 +4,12 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: windows-2019
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         toolset: [ClangCL, MSVC]
         configuration: [Debug, Release]
+        os: [windows-2019, windows-2022]
 
     steps:
     - uses: actions/checkout@v2
